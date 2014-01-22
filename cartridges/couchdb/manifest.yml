@@ -1,0 +1,16 @@
+---
+Name: couchdb
+Version: '0.1'
+Base: openshift/couchdb
+User: couchdb
+Working-Dir: '/var/lib/couchdb'
+#Prepare: "/var/lib/couchdb/prepare"
+Prepare: "cp -ad /var/lib/couchdb/1.2.0 /var/lib/couchdb-data/"
+Execute: '/var/lib/couchdb/launch'
+Volumes:
+  Persistent:
+    Location: '/var/lib/couchdb-data'
+Endpoints:
+- Name: WEB_PORT
+  Port: 5984
+  Protocols: [http]
