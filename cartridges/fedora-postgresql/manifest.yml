@@ -5,6 +5,9 @@ Base: openshift/fedora-postgresql:latest
 User: postgres
 Prepare: '/usr/bin/postgresql-setup initdb'
 Execute: '/opt/openshift/launch'
+Volumes:
+  Prepare:
+    Location: '/tmp/source'
 Endpoints:
 - Name: EXAMPLE_PORT_1
   Port: 8000
