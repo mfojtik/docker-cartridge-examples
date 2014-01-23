@@ -4,7 +4,6 @@ RUN yum install -y ruby postgresql postgresql-server
 
 RUN mkdir -p /opt/openshift /opt/openshift/conf
 
-ADD ./prepare /opt/openshift/prepare
 ADD ./launch  /opt/openshift/launch
 ADD ./postgresql.conf.erb /opt/openshift/postgresql.conf.erb
 
