@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export USER=postgres
+export HOME=/opt/openshift
+export PGDATA=/var/lib/pgsql/data
+export PGPORT=5432
+
+/usr/bin/initdb --pgdata="${PGDATA}" --auth='ident'

@@ -3,7 +3,7 @@ Name: postgresql
 Version: '0.1'
 Base: openshift/fedora-postgresql:latest
 User: postgres
-Prepare: '/usr/bin/postgresql-setup initdb'
+Prepare: '/opt/openshift/prepare'
 Execute: '/opt/openshift/launch'
 Volumes:
   Prepare:
