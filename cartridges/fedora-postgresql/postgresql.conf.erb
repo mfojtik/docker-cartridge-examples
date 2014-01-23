@@ -1,0 +1,11 @@
+listen_addresses = "localhost,<%=ENV['IPADDR']%>"
+port = <%=ENV['PGPORT']%>
+max_connections = 100
+shared_buffers = 128MB
+log_destination = 'stderr'
+datestyle = 'iso, mdy'
+lc_messages = 'en_US.UTF-8'
+lc_monetary = 'en_US.UTF-8'
+lc_numeric = 'en_US.UTF-8'
+lc_time = 'en_US.UTF-8'
+default_text_search_config = 'pg_catalog.english'

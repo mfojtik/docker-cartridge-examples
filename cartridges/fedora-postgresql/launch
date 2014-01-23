@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export USER=postgres
+export HOME=/opt/openshift
+export PGDATA=/var/lib/pgsql/data
+export PGPORT=5432
+export IPADDR=$(ip a s | sed -ne '/127.0.0.1/!{s/^[ \t]*inet[ \t]*\([0-9.]\+\)\/.*$/\1/p}')
+
+erb $HOME/postgresql.conf.erb > $HOME/conf/postgresql.conf
+postmaster -D /var/lib/pgsql -c config_file=$HOME/conf/postgresql.conf

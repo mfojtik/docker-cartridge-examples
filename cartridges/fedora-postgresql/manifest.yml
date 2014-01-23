@@ -1,0 +1,11 @@
+---
+Name: postgresql
+Version: '0.1'
+Base: openshift/fedora-postgresql:latest
+User: postgres
+Prepare: '/usr/bin/postgresql-setup initdb'
+Execute: '/opt/openshift/launch'
+Endpoints:
+- Name: EXAMPLE_PORT_1
+  Port: 8000
+  Protocols: [http, ws]
