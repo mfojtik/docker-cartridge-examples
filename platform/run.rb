@@ -1,5 +1,6 @@
 #!/bin/env ruby
 
+require 'rubygems'
 require 'fileutils'
 require 'safe_yaml'
 require 'tmpdir'
@@ -14,7 +15,7 @@ module OpenShift
     end
 
     def run
-      parsed_manifest = YAML.safe_load_file(@manifest_path, safe: true)
+      parsed_manifest = YAML.safe_load_file(@manifest_path, :safe => true)
       user = parsed_manifest['User']
       has_persistent = parsed_manifest['Volumes'].has_key? 'Persistent'
 
