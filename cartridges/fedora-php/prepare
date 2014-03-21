@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+source_dir="$1"
+if [ ! -e $source_dir ]; then
+  echo "Need to provide a directory containing php application source"
+  exit 1
+fi
+
+cartridge_dir="/opt/openshift/cartridge"
+app_dir="${cartridge_dir}/html"
+conf_dir="${cartridge_dir}/conf"
+
+mkdir -p $cartridge_dir $app_dir $conf_dir ${cartridge_dir}/logs ${cartridge_dir}/run
+chown -R php_app:php_app $cartridge_dir
+
+cp -vRf ${source_dir}/* ${app_dir}/

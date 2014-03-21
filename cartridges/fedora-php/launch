@@ -1,0 +1,13 @@
+#!/bin/bash -e
+
+export HOME="/opt/openshift"
+export USER=`whoami`
+export OPENSHIFT_PHP_IP=$(ip a s | sed -ne '/127.0.0.1/!{s/^[ \t]*inet[ \t]*\([0-9.]\+\)\/.*$/\1/p}')
+export OPENSHIFT_PHP_PORT=8000
+export OPENSHIFT_PHP_DIR="${HOME}/cartridge"
+export OPENSHIFT_REPO_DIR="${OPENSHIFT_PHP_DIR}/html"
+
+pushd $HOME >/dev/null
+erb httpd.conf.erb > ${OPENSHIFT_PHP_DIR}/conf/httpd.conf
+/usr/sbin/httpd -DFOREGROUND -f ${OPENSHIFT_PHP_DIR}/conf/httpd.conf
+popd >/dev/null
